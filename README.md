@@ -210,6 +210,57 @@ zelora_hr_agent/
 │       └── health.py         # GET /health
 ├── tests/
 ├── .env
+├── cli.py                # Interactive console demo
 ├── requirements.txt
 └── run.py
 ```
+
+## Interactive Console Demo
+
+In addition to the REST API, the system includes an interactive console demo (`cli.py`) that allows you to chat with the HR agent directly in the terminal — no Postman or browser needed.
+
+### Run the Console Demo
+
+```bash
+python cli.py
+```
+
+### What it does
+
+- Prompts you to enter an Employee ID on startup
+- Shows any existing long-term memory for that user
+- Lets you type natural language HR requests and see the full pipeline response in real time
+- Displays the intent label, confidence score, and which agent responded
+
+### Example Session
+
+```
+Enter your Employee ID: emp_12345
+[OK] Logged in as: emp_12345
+
+emp_12345 > I want to take 3 days sick leave next week
+
+Thinking...
+────────────────────────────────────────────────────────
+  Intent :  [LEAVE]   Confidence: 97%
+  Agent  :  leave_agent
+
+Agent Response:
+   Sure! I have noted your sick leave request for
+   3 days next week...
+────────────────────────────────────────────────────────
+```
+
+### Console Commands
+
+| Command | Description |
+|---|---|
+| `memory` | Show current STM and LTM for the user |
+| `audit` | Show last 10 audit log entries |
+| `set <key> <value>` | Save a long-term memory fact (e.g. `set department Engineering`) |
+| `clear stm` | Wipe short-term conversation memory |
+| `switch` | Switch to a different employee ID |
+| `help` | Show all available commands |
+| `quit` / `exit` | Exit the demo |
+
+> **Note:** `cli.py` talks directly to the project modules — the FastAPI server (`run.py`) does not need to be running when using the console demo.
