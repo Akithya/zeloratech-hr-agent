@@ -1,6 +1,6 @@
-# ZeloraTech HR Automation Engine
+# HR Automation Engine
 
-Multi-agent task routing and memory engine for HR automation — ZeloraTech Technical Assessment.
+Multi-agent task routing and memory engine for HR automation
 
 ---
 
